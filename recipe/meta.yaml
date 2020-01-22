@@ -1,25 +1,24 @@
-{% set name = "py_stringsimjoin" %}
-{% set version = "0.3.0" %}
-{% set sha256 = "6a5daf2feb2fff9c3b2daaade64348e5df2ce45bb961797f2624dc0ca01ad0be" %}
+{% set version = "0.3.1" %}
+{% set sha256 = "263ffea376ba850fb18fab9a7af390b9a7fe4b688ac21a8c6c120297094018af" %}
 
 package:
-  name: {{ name|lower }}
+  name: py_stringsimjoin
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/p/py_stringsimjoin/py_stringsimjoin-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
   number: 0
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
   skip: True  # [not x86_64]
 
 requirements:
   build:
     - {{ compiler('c') }}
-    - msinttypes  # [vc9]
+    - {{ compiler('cxx') }}
+    - msinttypes  # [win and vc<14]
   host:
     - python
     - pip
@@ -32,12 +31,11 @@ requirements:
     - py_stringmatching
   run:
     - python
-    - {{ pin_compatible('numpy') }}
     - six
-    - pandas
+    - pandas >=0.16.0
     - joblib
-    - pyprind
-    - py_stringmatching
+    - pyprind >=2.9.3
+    - py_stringmatching >=0.2.1
 
 test:
   imports:
@@ -48,7 +46,7 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: 'Python library for string similarity joins.'
+  summary: Python library for string similarity joins.
   description: |
     This project seeks to build a Python software package that provides
     scalable implementation of string similarity joins over two tables,
