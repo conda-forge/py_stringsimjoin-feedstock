@@ -1,5 +1,5 @@
-{% set version = "0.3.1" %}
-{% set sha256 = "263ffea376ba850fb18fab9a7af390b9a7fe4b688ac21a8c6c120297094018af" %}
+{% set version = "0.3.2" %}
+{% set sha256 = "a41aa3d0b3520333b7a38132fd1e6f5f9b3421be64f964e644ff7544cacbc89b" %}
 
 package:
   name: py_stringsimjoin
@@ -12,7 +12,7 @@ source:
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps -vv
-  skip: True  # [not x86_64]
+  skip: true  # [not x86_64]
 
 requirements:
   build:
