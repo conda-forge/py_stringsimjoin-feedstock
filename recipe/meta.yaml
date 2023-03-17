@@ -1,5 +1,5 @@
-{% set version = "0.3.2" %}
-{% set sha256 = "a41aa3d0b3520333b7a38132fd1e6f5f9b3421be64f964e644ff7544cacbc89b" %}
+{% set version = "0.3.3" %}
+{% set sha256 = "3c577592706860dec1bf7e47529d9a58caeaea6969100980b096ad350e90871c" %}
 
 package:
   name: py_stringsimjoin
