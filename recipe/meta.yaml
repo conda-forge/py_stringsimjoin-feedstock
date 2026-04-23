@@ -1,12 +1,12 @@
-{% set version = "0.3.2" %}
-{% set sha256 = "a41aa3d0b3520333b7a38132fd1e6f5f9b3421be64f964e644ff7544cacbc89b" %}
+{% set version = "0.3.6" %}
+{% set sha256 = "50629a538f9b40a32b9d612ac3ee46d11fae1d0e2923a971ed54666ab7d2f31f" %}
 
 package:
   name: py_stringsimjoin
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/p/py_stringsimjoin/py_stringsimjoin-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/p/py_stringsimjoin/py-stringsimjoin-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
@@ -17,6 +17,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - msinttypes  # [win and vc<14]
   host:
